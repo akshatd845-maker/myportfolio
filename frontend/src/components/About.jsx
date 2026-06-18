@@ -54,7 +54,7 @@ const About = () => {
         >
           <ProfileCard
             name="Akshat Dixit"
-            title="Frontend AI Engineer"
+            title="Full Stack Developer"
             handle="akshatd845"
             status="3rd Year CS Student"
             contactText="Let's Connect"
@@ -89,8 +89,9 @@ const About = () => {
               Third-year Computer Science student at Shri Ramswaroop Memorial
               University, Lucknow. With{" "}
               <span className="text-[#27CBCB]">1+ years of full-stack engineering</span>{" "}
-              experience, I have built applications using React, Next.js,
-              Node.js, FastAPI and AI technologies.
+              experience, I build scalable MERN stack applications — from
+              database design and REST API architecture to responsive React
+              frontends and production deployments.
             </p>
           </motion.div>
           <motion.div
@@ -100,8 +101,8 @@ const About = () => {
             <p className="text-[#80978F] text-sm sm:text-base leading-relaxed italic">
               &quot;I enjoy solving real-world problems and building{" "}
               <span className="text-gray-300">scalable products</span> from
-              schema design to deployment. From intuitive frontends to robust
-              backends — I care about the entire stack.&quot;
+              schema design to deployment. Clean APIs, performant backends,
+              and intuitive frontends — I care about the entire stack.&quot;
             </p>
           </motion.div>
           <motion.div
@@ -116,9 +117,9 @@ const About = () => {
             </motion.h3>
             <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3">
               {[
-                "Frontend Engineering",
                 "Full Stack Development",
-                "AI Engineering",
+                "MERN Stack",
+                "Backend Architecture",
                 "Software Engineering",
               ].map((item, i) => (
                 <motion.div
@@ -133,6 +134,12 @@ const About = () => {
               ))}
             </div>
           </motion.div>
+          <motion.p
+            variants={fadeUp}
+            className="text-xs sm:text-sm text-gray-500 italic text-center lg:text-left"
+          >
+            Additionally interested in AI-powered applications and intelligent systems.
+          </motion.p>
           <motion.button
             variants={fadeUp}
             whileHover={{ scale: 1.02 }}

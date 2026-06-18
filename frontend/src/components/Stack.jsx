@@ -31,32 +31,32 @@ import { RiJavascriptFill } from "react-icons/ri";
 import { BiData } from "react-icons/bi";
 
 const categories = {
-  languages: [
-    { name: "TypeScript", icon: <SiTypescript /> },
-    { name: "JavaScript", icon: <RiJavascriptFill /> },
-    { name: "Python", icon: <FaPython /> },
-    { name: "Java", icon: <FaJava /> },
-    { name: "SQL", icon: <BiData /> },
-  ],
-  frontend: [
+  fullstack: [
     { name: "React", icon: <FaReact /> },
     { name: "Next.js", icon: <SiNextdotjs /> },
-    { name: "Three.js", icon: <SiThreedotjs /> },
-    { name: "GSAP", icon: <TbBrandFramerMotion /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss /> },
-    { name: "HTML5", icon: <FaHtml5 /> },
-    { name: "CSS3", icon: <FaCss3 /> },
-  ],
-  backend: [
     { name: "Node.js", icon: <FaNodeJs /> },
     { name: "Express.js", icon: <SiExpress /> },
-    { name: "FastAPI", icon: <SiFastapi /> },
+    { name: "MongoDB", icon: <SiMongodb /> },
     { name: "REST APIs", icon: <TbApi /> },
     { name: "JWT Auth", icon: <MdSecurity /> },
   ],
-  database: [
-    { name: "MongoDB", icon: <SiMongodb /> },
+  frontend: [
+    { name: "TypeScript", icon: <SiTypescript /> },
+    { name: "JavaScript", icon: <RiJavascriptFill /> },
+    { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+    { name: "Three.js", icon: <SiThreedotjs /> },
+    { name: "GSAP", icon: <TbBrandFramerMotion /> },
+  ],
+  backend: [
+    { name: "FastAPI", icon: <SiFastapi /> },
     { name: "SQLite", icon: <SiSqlite /> },
+  ],
+  languages: [
+    { name: "Python", icon: <FaPython /> },
+    { name: "Java", icon: <FaJava /> },
+    { name: "SQL", icon: <BiData /> },
+    { name: "HTML5", icon: <FaHtml5 /> },
+    { name: "CSS3", icon: <FaCss3 /> },
   ],
 };
 

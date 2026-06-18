@@ -68,7 +68,11 @@ const Contact = () => {
             Let&apos;s work together
           </h2>
 
-          <p className="mt-6 text-gray-400 max-w-md text-lg">
+          <p className="mt-4 text-[#80978F] text-lg font-medium">
+            Building scalable web applications and modern digital experiences.
+          </p>
+
+          <p className="mt-3 text-gray-400 max-w-md text-lg">
             Have an opportunity or project in mind? Send a quick message — I
             usually respond within 24 hours.
           </p>

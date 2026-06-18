@@ -41,8 +41,8 @@ const Hero = () => {
       <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-[#80978F] leading-tight">
         <TextType
           text={[
-            "Frontend AI Engineer.",
             "Full Stack Developer.",
+            "Software Development Engineer.",
             "Building scalable products.",
             "Shipping production-ready apps.",
           ]}
@@ -57,9 +57,9 @@ const Hero = () => {
       <p className="text-[#80978F] text-base md:text-lg lg:text-xl mt-2 lg:mt-3 w-full lg:w-[60%]">
         Third-year Computer Science undergraduate with 1+ years of full-stack
         engineering experience. I build production-grade applications across
-        React, Next.js frontends, Node.js/FastAPI backends and AI integrations.
-        Passionate about creating scalable products and exceptional user
-        experiences.
+        React, Next.js frontends, Node.js/Express backends and MongoDB databases.
+        Passionate about scalable systems, clean architecture, and exceptional
+        user experiences.
       </p>
       <div className="flex flex-col sm:flex-row justify-start items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-5 mt-3">
         <button
@@ -138,10 +138,10 @@ const Hero = () => {
       <div className="hidden md:block absolute bottom-10 left-1/4 lg:left-1/3">
         <div className="flex flex-wrap space-x-2 opacity-30">
           <div className="font-mono text-xs md:text-sm text-gray-500">
-            {"// developer"}
+            {"// full-stack"}
           </div>
           <div className="font-mono text-xs md:text-sm text-gray-500">
-            {"// ai-engineer"}
+            {"// mern-stack"}
           </div>
           <div className="font-mono text-xs md:text-sm text-gray-500">
             {"// problem-solver"}

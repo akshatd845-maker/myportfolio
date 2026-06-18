@@ -12,11 +12,11 @@ const projects = [
     title: "Future Basket",
     subtitle: "Full Stack E-Commerce Platform",
     description:
-      "Production-ready e-commerce platform with authentication, shopping cart, order processing, payment integration and admin dashboard.",
+      "Production-ready MERN stack e-commerce platform with end-to-end authentication, shopping cart, order processing, payment integration and an admin dashboard.",
     highlights: [
-      "JWT authentication & sessions",
-      "Shopping cart & checkout flow",
-      "Admin dashboard",
+      "JWT authentication & session management",
+      "RESTful API with Express.js & MongoDB",
+      "Admin dashboard with role-based access",
     ],
     tech: ["MongoDB", "Express.js", "React", "Node.js", "JWT"],
     github: "https://github.com/akshatd845-maker",
@@ -26,13 +26,13 @@ const projects = [
   },
   {
     title: "Task Flow",
-    subtitle: "Project Management System",
+    subtitle: "Full Stack Project Management System",
     description:
-      "Collaborative project management platform supporting task assignment, RBAC and real-time status tracking.",
+      "Collaborative MERN stack project management platform with task assignment, role-based access control (RBAC), state management and real-time status tracking.",
     highlights: [
-      "Role-based access control",
-      "Task assignment & tracking",
-      "Real-time updates",
+      "Role-based access control (RBAC)",
+      "REST API with full CRUD operations",
+      "Persistent state & MongoDB data layer",
     ],
     tech: ["MongoDB", "Express.js", "React", "Node.js"],
     github: "https://github.com/akshatd845-maker",
@@ -42,13 +42,13 @@ const projects = [
   },
   {
     title: "Weather Forecasting Application",
-    subtitle: "Real-Time Weather Platform",
+    subtitle: "Full Stack Real-Time Weather Platform",
     description:
-      "Real-time weather application with geolocation support and 10-day weather forecasts.",
+      "Full-stack weather application integrating a third-party REST API with geolocation support, 10-day forecasts and a Node.js backend for API proxying and rate limiting.",
     highlights: [
+      "REST API integration & backend proxy",
       "Geolocation detection",
-      "10-day forecast charts",
-      "REST API integration",
+      "10-day forecast with dynamic charts",
     ],
     tech: ["React", "Node.js", "REST API", "Tailwind CSS"],
     github: "https://github.com/akshatd845-maker",
@@ -165,7 +165,7 @@ const Projects = () => {
           Things I&apos;ve Built
         </h2>
         <p className="mt-2 text-[#80978F] text-base sm:text-lg max-w-xl text-center lg:text-left mx-auto lg:mx-0">
-          Real-world projects focused on system design, scalability, and clean engineering.
+          Full-stack applications built with the MERN stack — focused on scalable architecture, clean APIs, and great user experience.
         </p>
       </div>
 
