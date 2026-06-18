@@ -37,7 +37,7 @@ const ProfileCardComponent = ({
   handle = "javicodes",
   status = "Online",
   contactText = "Contact",
-  linkedinUrl = "https://www.linkedin.com/in/adityarajsrv/",
+  linkedinUrl = "https://linkedin.com/in/akshatdixit001",
   showUserInfo = true,
   onContactClick,
 }) => {
@@ -346,7 +346,7 @@ const ProfileCardComponent = ({
                 className="avatar"
                 src={avatarUrl}
                 alt={`${name || "User"} avatar`}
-                loading="lazy"
+                loading="eager"
                 onError={(e) => {
                   const t = e.target;
                   t.style.display = "none";
@@ -359,7 +359,7 @@ const ProfileCardComponent = ({
                       <img
                         src={miniAvatarUrl || avatarUrl}
                         alt={`${name || "User"} mini avatar`}
-                        loading="lazy"
+                        loading="eager"
                         onError={(e) => {
                           const t = e.target;
                           t.style.opacity = "0.5";

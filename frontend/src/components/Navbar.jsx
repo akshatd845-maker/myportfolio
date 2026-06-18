@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
-const sections = ["about", "stack", "projects", "contact"];
+const sections = ["about", "experience", "stack", "projects", "education", "contact"];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -89,7 +89,7 @@ const Navbar = () => {
       >
         <a href="#top" onClick={scrollToTop}>
           <h1 className="text-xl sm:text-2xl font-bold cursor-pointer text-gray-400 hover:text-[#27CBCB] transition-colors">
-            <pre className="text-base sm:text-lg md:text-xl">&lt;/aditya&gt;</pre>
+            <pre className="text-base sm:text-lg md:text-xl">&lt;/akshat&gt;</pre>
           </h1>
         </a>
         <div className="hidden md:flex items-center space-x-5 text-lg">

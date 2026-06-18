@@ -3,103 +3,58 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
-
-import careerquillImg from "../assets/careerquill.png";
-import flowmindImg from "../assets/flowmind.png";
-import proctorlyImg from "../assets/proctorly.png";
-import hiremeImg from "../assets/hireme.png";
+import futurebasket from "../assets/futurebasket.png";
+import taskflow from "../assets/taskflow.png";
+import weather from "../assets/weather.png";
 
 const projects = [
   {
-    title: "CareerQuill",
-    subtitle: "Resume Generation & ATS Scoring Platform",
+    title: "Future Basket",
+    subtitle: "Full Stack E-Commerce Platform",
     description:
-      "End-to-end resume builder with ATS scoring using NLP to match resumes against job descriptions and suggest keywords.",
+      "Production-ready e-commerce platform with authentication, shopping cart, order processing, payment integration and admin dashboard.",
     highlights: [
-      "6 resume templates (PDF & DOCX)",
-      "NLP-based ATS scoring",
-      "JWT auth & resume versioning",
+      "JWT authentication & sessions",
+      "Shopping cart & checkout flow",
+      "Admin dashboard",
     ],
-    tech: [
-      "React",
-      "Tailwind",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Python",
-      "FastAPI",
-      "spaCy",
-      "scikit-learn",
-    ],
-    github: "https://github.com/adityarajsrv/CareerQuill",
-    live: "https://career-quill-umber.vercel.app/",
-    image: careerquillImg,
+    tech: ["MongoDB", "Express.js", "React", "Node.js", "JWT"],
+    github: "https://github.com/akshatd845-maker",
+    live: "https://futurebaskett.netlify.app/",
     accent: "from-[#27CBCB]/40",
+    image: futurebasket,
   },
   {
-    title: "FlowMind-AI",
-    subtitle: "No-Code AI Workflow Builder",
+    title: "Task Flow",
+    subtitle: "Project Management System",
     description:
-      "Visual platform to design and execute AI workflows using drag-and-drop nodes, document retrieval, and LLM orchestration.",
+      "Collaborative project management platform supporting task assignment, RBAC and real-time status tracking.",
     highlights: [
-      "Visual workflow editor",
-      "Semantic search (90%+ accuracy)",
-      "Tiered access & orchestration",
+      "Role-based access control",
+      "Task assignment & tracking",
+      "Real-time updates",
     ],
-    tech: [
-      "React",
-      "React Flow",
-      "FastAPI",
-      "PostgreSQL",
-      "MongoDB",
-      "ChromaDB",
-      "Gemini LLM",
-      "Docker",
-    ],
-    github: "https://github.com/adityarajsrv/FlowMind-AI",
-    live: "https://flow-mind-ai-tan.vercel.app",
-    image: flowmindImg,
+    tech: ["MongoDB", "Express.js", "React", "Node.js"],
+    github: "https://github.com/akshatd845-maker",
+    live: "https://taskflow010.netlify.app/",
     accent: "from-violet-400/40",
+    image: taskflow,
   },
   {
-    title: "Proctorly",
-    subtitle: "Real-Time Video Proctoring System",
+    title: "Weather Forecasting Application",
+    subtitle: "Real-Time Weather Platform",
     description:
-      "Web-based proctoring system monitoring video, audio, and object detection to generate session integrity reports.",
+      "Real-time weather application with geolocation support and 10-day weather forecasts.",
     highlights: [
-      "Face & object detection",
-      "Real-time event logging",
-      "PDF integrity reports",
+      "Geolocation detection",
+      "10-day forecast charts",
+      "REST API integration",
     ],
-    tech: [
-      "React",
-      "Tailwind",
-      "MediaPipe",
-      "TensorFlow.js",
-      "Node.js",
-      "MongoDB",
-      "jsPDF",
-    ],
-    github: "https://github.com/adityarajsrv/Proctorly",
-    live: "https://proctorly-kappa.vercel.app",
-    image: proctorlyImg,
+    tech: ["React", "Node.js", "REST API", "Tailwind CSS"],
+    github: "https://github.com/akshatd845-maker",
+    live: "https://weatherforecastiing.netlify.app/",
     accent: "from-amber-400/40",
-  },
-  {
-    title: "HireMe",
-    subtitle: "MERN Recruitment Platform Prototype",
-    description:
-      "Full-stack recruitment platform with secure authentication, profile management, and role-based access.",
-    highlights: [
-      "JWT auth & RBAC",
-      "Profile completion tracking",
-      "Cloudinary uploads",
-    ],
-    tech: ["React", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary"],
-    github: "https://github.com/adityarajsrv/HireMe",
-    live: "https://hire-me-inky.vercel.app",
-    image: hiremeImg,
-    accent: "from-cyan-400/40",
+    image: weather,
   },
 ];
 
@@ -120,7 +75,7 @@ const ProjectCard = ({ project }) => {
         <img
           src={project.image}
           alt={project.title}
-          className="h-full w-full object-cover scale-105 blur-[2px] group-hover:blur-0 group-hover:scale-100 transition-all duration-500"
+          className="h-full w-full object-cover scale-105 group-hover:scale-100 transition-all duration-500"
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
         <motion.div
@@ -174,18 +129,20 @@ const ProjectCard = ({ project }) => {
             href={project.github}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-white transition-colors"
+            className="hover:text-white transition-colors flex items-center gap-1 text-xs"
           >
             <FaGithub size={16} />
+            <span>GitHub</span>
           </a>
           {project.live && (
             <a
               href={project.live}
               target="_blank"
               rel="noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-white transition-colors flex items-center gap-1 text-xs"
             >
               <ExternalLink size={16} />
+              <span>Live Demo</span>
             </a>
           )}
         </div>
@@ -229,7 +186,7 @@ const Projects = () => {
 
       <div className="flex justify-center text-[#27CBCB]">
         <a
-          href="https://github.com/adityarajsrv"
+          href="https://github.com/akshatd845-maker"
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-2 group"

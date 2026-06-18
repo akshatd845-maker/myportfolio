@@ -1,4 +1,4 @@
-import { ExternalLink, Send } from "lucide-react";
+import { ExternalLink, Send, Mail, MapPin } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
@@ -18,7 +18,7 @@ const Contact = () => {
 
   useEffect(() => {
     if (!toast) return;
-    const t = setTimeout(() => setToast(null), 3000);
+    const t = setTimeout(() => setToast(null), 4000);
     return () => clearTimeout(t);
   }, [toast]);
 
@@ -58,12 +58,24 @@ const Contact = () => {
         body: JSON.stringify(form),
       });
 
-      if (!res.ok) throw new Error();
+      if (!res.ok) throw new Error("server_error");
 
       setForm({ name: "", email: "", message: "" });
-      setToast("Message sent successfully ✓");
-    } catch {
-      setToast("Failed to send message");
+      setToast({ type: "success", text: "Message sent successfully ✓" });
+    } catch (err) {
+      // If backend is offline, open mailto as a reliable fallback
+      const isNetworkError =
+        err instanceof TypeError && err.message.toLowerCase().includes("fetch");
+      if (isNetworkError) {
+        const subject = encodeURIComponent(`Portfolio message from ${form.name}`);
+        const body = encodeURIComponent(
+          `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+        );
+        window.open(`mailto:akshatd845@gmail.com?subject=${subject}&body=${body}`);
+        setToast({ type: "success", text: "Opening your email client ✓" });
+      } else {
+        setToast({ type: "error", text: "Failed to send — please email directly." });
+      }
     } finally {
       setLoading(false);
     }
@@ -76,19 +88,33 @@ const Contact = () => {
       <div className="grid md:grid-cols-2 gap-16 items-center">
         <motion.div variants={fade} initial="hidden" whileInView="show">
           <h2 className="text-5xl font-bold leading-tight text-transparent bg-clip-text bg-linear-to-r from-gray-100 to-gray-400">
-            Let’s work together
+            Let&apos;s work together
           </h2>
 
           <p className="mt-6 text-gray-400 max-w-md text-lg">
-            Have an opportunity or project in mind? Send a quick message - I
+            Have an opportunity or project in mind? Send a quick message — I
             usually respond within 24 hours.
           </p>
 
           <div className="mt-10 space-y-4">
             <motion.a
               whileHover={{ x: 6 }}
-              href="https://github.com/adityarajsrv"
+              href="mailto:akshatd845@gmail.com"
+              className="flex items-center gap-4 p-4 rounded-xl border border-gray-800 bg-gray-900/40 backdrop-blur-sm"
+            >
+              <Mail className="text-2xl text-[#27CBCB]" />
+              <div>
+                <p className="font-medium text-gray-200">Email</p>
+                <p className="text-sm text-gray-400">akshatd845@gmail.com</p>
+              </div>
+              <ExternalLink className="ml-auto opacity-60" size={16} />
+            </motion.a>
+
+            <motion.a
+              whileHover={{ x: 6 }}
+              href="https://github.com/akshatd845-maker"
               target="_blank"
+              rel="noreferrer"
               className="flex items-center gap-4 p-4 rounded-xl border border-gray-800 bg-gray-900/40 backdrop-blur-sm"
             >
               <FaGithub className="text-2xl" />
@@ -96,41 +122,34 @@ const Contact = () => {
                 <p className="font-medium text-gray-200">GitHub</p>
                 <p className="text-sm text-gray-400">Explore my projects</p>
               </div>
-              <ExternalLink className="ml-auto opacity-60" />
+              <ExternalLink className="ml-auto opacity-60" size={16} />
             </motion.a>
 
             <motion.a
               whileHover={{ x: 6 }}
-              href="https://linkedin.com/in/adityarajsrv"
+              href="https://linkedin.com/in/akshatdixit001"
               target="_blank"
+              rel="noreferrer"
               className="flex items-center gap-4 p-4 rounded-xl border border-gray-800 bg-gray-900/40 backdrop-blur-sm"
             >
               <FaLinkedin className="text-2xl text-blue-400" />
               <div>
                 <p className="font-medium text-gray-200">LinkedIn</p>
-                <p className="text-sm text-gray-400">Let’s connect</p>
+                <p className="text-sm text-gray-400">Let&apos;s connect professionally</p>
               </div>
-              <ExternalLink className="ml-auto opacity-60" />
+              <ExternalLink className="ml-auto opacity-60" size={16} />
             </motion.a>
-            <motion.a
+
+            <motion.div
               whileHover={{ x: 6 }}
-              href="https://contra.com/aditya_raj_srivastava_vgiys102?referralExperimentNid=DEFAULT_REFERRAL_PROGRAM&referrerUsername=aditya_raj_srivastava_vgiys102"
-              target="_blank"
               className="flex items-center gap-4 p-4 rounded-xl border border-gray-800 bg-gray-900/40 backdrop-blur-sm"
             >
-              <div className="w-10 h-10 rounded-lg bg-white text-black flex items-center justify-center font-bold">
-                C
-              </div>
-
+              <MapPin className="text-2xl text-[#26D868]" />
               <div>
-                <p className="font-medium text-gray-200">Contra</p>
-                <p className="text-sm text-gray-400">
-                  Hire me for freelance projects
-                </p>
+                <p className="font-medium text-gray-200">Location</p>
+                <p className="text-sm text-gray-400">Lucknow, India</p>
               </div>
-
-              <ExternalLink className="ml-auto opacity-60" />
-            </motion.a>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -151,7 +170,7 @@ const Contact = () => {
               placeholder="Your Name"
               value={form.name}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-gray-900 border border-gray-800 focus:border-emerald-500"
+              className="w-full p-3 rounded-lg bg-gray-900 border border-gray-800 focus:border-[#27CBCB] outline-none transition-colors text-gray-200 placeholder-gray-500"
             />
             {errors.name && (
               <p className="text-sm text-red-400 mt-1">{errors.name}</p>
@@ -164,7 +183,7 @@ const Contact = () => {
               placeholder="Email Address"
               value={form.email}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-gray-900 border border-gray-800 focus:border-emerald-500"
+              className="w-full p-3 rounded-lg bg-gray-900 border border-gray-800 focus:border-[#27CBCB] outline-none transition-colors text-gray-200 placeholder-gray-500"
             />
             {errors.email && (
               <p className="text-sm text-red-400 mt-1">{errors.email}</p>
@@ -178,20 +197,25 @@ const Contact = () => {
               placeholder="Your Message"
               value={form.message}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-gray-900 border border-gray-800 focus:border-emerald-500"
+              className="w-full p-3 rounded-lg bg-gray-900 border border-gray-800 focus:border-[#27CBCB] outline-none transition-colors text-gray-200 placeholder-gray-500 resize-none"
             />
             {errors.message && (
               <p className="text-sm text-red-400 mt-1">{errors.message}</p>
             )}
           </div>
 
-          <button className="cursor-pointer w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 font-medium">
+          <button
+            type="submit"
+            className="cursor-pointer w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-[#27CBCB] hover:bg-[#1fb3b3] text-gray-900 font-semibold transition-colors"
+          >
             <Send className="w-4 h-4" />
             {loading ? "Sending..." : "Send Message"}
           </button>
 
           {toast && (
-            <p className="text-sm text-center text-gray-300">{toast}</p>
+            <p className={`text-sm text-center ${toast.type === "success" ? "text-[#26D868]" : "text-red-400"}`}>
+              {toast.text}
+            </p>
           )}
         </motion.form>
       </div>

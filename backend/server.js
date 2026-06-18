@@ -35,7 +35,7 @@ app.post("/send-email", async (req, res) => {
   try {
     await resend.emails.send({
       from: "Portfolio Contact <Portfolio@resend.dev>",
-      to: "adityarajsrvofficial@gmail.com",
+      to: "akshatd845@gmail.com",
       subject: `New Contact Message from ${name}`,
       reply_to: email,
       html: `

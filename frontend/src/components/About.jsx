@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProfileCard from "./ui/ProfileCard";
 import profileImg from "../assets/profile.png";
-import profile from "../assets/passport_size.jpg";
+import profile from "../assets/passprot_size.png";
 import { X, Download, ExternalLink } from "lucide-react";
 
 const container = {
@@ -28,9 +28,13 @@ const About = () => {
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/Resume.pdf";
-    link.download = "Aditya_Raj_Srivastava_Resume.pdf";
+    link.href = "/Resume.pdf?v=2";
+    link.download = "Akshat_Dixit_Resume.pdf";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -49,17 +53,18 @@ const About = () => {
           className="w-full max-w-md lg:max-w-none"
         >
           <ProfileCard
-            name="Aditya Raj Srivastava"
-            title="Full-Stack Developer"
-            handle="adityarajsrv"
-            status="Final Year Student"
+            name="Akshat Dixit"
+            title="Frontend AI Engineer"
+            handle="akshatd845"
+            status="3rd Year CS Student"
             contactText="Let's Connect"
             miniAvatarUrl={profile}
             avatarUrl={profileImg}
             showUserInfo
             enableTilt
             enableMobileTilt={false}
-            location="India"
+            location="Lucknow, India"
+            linkedinUrl="https://linkedin.com/in/akshatdixit001"
           />
         </motion.div>
         <motion.div
@@ -75,16 +80,17 @@ const About = () => {
           >
             A developer who{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#27CBCB] to-[#26D868]">
-              cares about the details
+              builds things that matter
             </span>
           </motion.h2>
           <motion.div variants={fadeUp} className="relative pl-6">
             <div className="absolute left-0 top-2 w-1 h-20 bg-linear-to-b from-[#27CBCB] to-[#26D868] rounded-full" />
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-              Final year Computer Science student with a solid foundation in
-              software development, committed to creating{" "}
-              <span className="text-[#27CBCB]">scalable and reliable</span>{" "}
-              full-stack applications.
+              Third-year Computer Science student at Shri Ramswaroop Memorial
+              University, Lucknow. With{" "}
+              <span className="text-[#27CBCB]">1+ years of full-stack engineering</span>{" "}
+              experience, I have built applications using React, Next.js,
+              Node.js, FastAPI and AI technologies.
             </p>
           </motion.div>
           <motion.div
@@ -92,11 +98,10 @@ const About = () => {
             className="bg-linear-to-br from-gray-900/50 to-transparent p-4 sm:p-5 rounded-xl border border-gray-800/50"
           >
             <p className="text-[#80978F] text-sm sm:text-base leading-relaxed italic">
-              &quot;Curiosity drives how I approach technology - from solving
-              coding problems to developing{" "}
-              <span className="text-gray-300">intuitive, useful software</span>.
-              I enjoy transforming abstract ideas into tangible, usable
-              solutions.&quot;
+              &quot;I enjoy solving real-world problems and building{" "}
+              <span className="text-gray-300">scalable products</span> from
+              schema design to deployment. From intuitive frontends to robust
+              backends — I care about the entire stack.&quot;
             </p>
           </motion.div>
           <motion.div
@@ -107,14 +112,14 @@ const About = () => {
             className="space-y-3"
           >
             <motion.h3 variants={fadeUp} className="text-lg text-[#80978F] text-center lg:text-left">
-              Interests
+              Currently interested in
             </motion.h3>
             <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3">
               {[
-                "Software Development",
-                "Web Technologies",
-                "AI & Automation",
-                "Problem-Solving",
+                "Frontend Engineering",
+                "Full Stack Development",
+                "AI Engineering",
+                "Software Engineering",
               ].map((item, i) => (
                 <motion.div
                   key={item}
@@ -164,9 +169,9 @@ const About = () => {
                 <h3 className="text-xl sm:text-2xl font-bold text-[#27CBCB]">Resume</h3>
                 <div className="flex gap-2 sm:gap-3">
                   <a
-                    href="/Resume.pdf"
+                    href="/Resume.pdf?v=2"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="p-2 sm:px-4 sm:py-2 bg-gray-800 rounded-lg hover:bg-gray-700"
                   >
                     <ExternalLink size={18} />
@@ -186,9 +191,9 @@ const About = () => {
                 </div>
               </div>
               <iframe
-                src="/Resume.pdf"
+                src="/Resume.pdf?v=2"
                 className="w-full h-[calc(90vh-80px)] sm:h-[calc(90vh-88px)] bg-white"
-                title="Resume"
+                title="Akshat Dixit Resume"
               />
             </motion.div>
           </motion.div>

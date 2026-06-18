@@ -9,56 +9,67 @@ import {
   FaCss3,
   FaPython,
   FaJava,
+  FaDocker,
+  FaLinux,
 } from "react-icons/fa";
 import {
   SiTypescript,
   SiTailwindcss,
   SiExpress,
   SiMongodb,
-  SiMysql,
+  SiSqlite,
   SiVercel,
-  SiRender,
   SiFastapi,
+  SiNextdotjs,
+  SiThreedotjs,
+  SiGithub,
+  SiVite,
 } from "react-icons/si";
-import { TbApi } from "react-icons/tb";
+import { TbApi, TbBrandFramerMotion } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md";
 import { RiJavascriptFill } from "react-icons/ri";
-import { FaAws } from "react-icons/fa6";
+import { BiData } from "react-icons/bi";
 
 const categories = {
-  frontend: [
-    { name: "HTML", icon: <FaHtml5 /> },
-    { name: "CSS", icon: <FaCss3 /> },
+  languages: [
+    { name: "TypeScript", icon: <SiTypescript /> },
     { name: "JavaScript", icon: <RiJavascriptFill /> },
+    { name: "Python", icon: <FaPython /> },
+    { name: "Java", icon: <FaJava /> },
+    { name: "SQL", icon: <BiData /> },
+  ],
+  frontend: [
     { name: "React", icon: <FaReact /> },
-    { name: "Tailwind", icon: <SiTailwindcss /> },
+    { name: "Next.js", icon: <SiNextdotjs /> },
+    { name: "Three.js", icon: <SiThreedotjs /> },
+    { name: "GSAP", icon: <TbBrandFramerMotion /> },
+    { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+    { name: "HTML5", icon: <FaHtml5 /> },
+    { name: "CSS3", icon: <FaCss3 /> },
   ],
   backend: [
     { name: "Node.js", icon: <FaNodeJs /> },
-    { name: "Express", icon: <SiExpress /> },
+    { name: "Express.js", icon: <SiExpress /> },
+    { name: "FastAPI", icon: <SiFastapi /> },
     { name: "REST APIs", icon: <TbApi /> },
     { name: "JWT Auth", icon: <MdSecurity /> },
-    { name: "FastAPI", icon: <SiFastapi /> },
   ],
   database: [
     { name: "MongoDB", icon: <SiMongodb /> },
-    { name: "MySQL", icon: <SiMysql /> },
-  ],
-  devops: [
-    { name: "GitHub", icon: <FaGitAlt /> },
-    { name: "Vercel", icon: <SiVercel /> },
-    { name: "Render", icon: <SiRender /> },
-    { name: "AWS", icon: <FaAws /> },
+    { name: "SQLite", icon: <SiSqlite /> },
   ],
 };
 
-const others = [
-  { name: "Python", icon: <FaPython /> },
-  { name: "TypeScript", icon: <SiTypescript /> },
-  { name: "Java", icon: <FaJava /> },
+const tools = [
+  { name: "Git", icon: <FaGitAlt /> },
+  { name: "GitHub", icon: <SiGithub /> },
+  { name: "Docker", icon: <FaDocker /> },
+  { name: "Linux", icon: <FaLinux /> },
+  { name: "Vite", icon: <SiVite /> },
+  { name: "Vercel", icon: <SiVercel /> },
 ];
 
-const tabs = ["all", ...Object.keys(categories)];
+const tabs = ["all", ...Object.keys(categories), "tools"];
 
 const Stack = () => {
   const [active, setActive] = useState("all");
@@ -77,6 +88,12 @@ const Stack = () => {
     </motion.div>
   );
 
+  const displayData = active === "tools"
+    ? tools
+    : active === "all"
+    ? null
+    : categories[active];
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 40 }}
@@ -89,7 +106,7 @@ const Stack = () => {
         <div className="max-w-2xl">
           <h2 className="text-3xl sm:text-4xl font-bold text-[#27CBCB] text-center lg:text-left">My Tech Stack</h2>
           <p className="text-[#80978F] text-base sm:text-lg mt-2 text-center lg:text-left">
-            The technologies I reach for most often - each chosen with purpose
+            The technologies I reach for most often — each chosen with purpose
           </p>
         </div>
         <div className="w-full lg:w-60 bg-gray-900/40 backdrop-blur-sm py-4 px-5 mr-35 rounded-xl border border-gray-700/40">
@@ -106,6 +123,7 @@ const Stack = () => {
           </div>
         </div>
       </div>
+
       <div className="flex flex-wrap gap-2 sm:gap-4 justify-center lg:justify-start">
         {tabs.map((key) => (
           <button
@@ -128,6 +146,7 @@ const Stack = () => {
           </button>
         ))}
       </div>
+
       {active === "all" ? (
         <div className="space-y-6 md:space-y-7 max-w-5xl">
           {Object.entries(categories).map(([group, techs]) => (
@@ -153,7 +172,7 @@ const Stack = () => {
           }}
           className="flex flex-wrap gap-2 sm:gap-3 md:gap-4 justify-center lg:justify-start max-w-4xl"
         >
-          {categories[active].map((tech) => (
+          {displayData.map((tech) => (
             <motion.div
               key={tech.name}
               variants={{
@@ -166,12 +185,13 @@ const Stack = () => {
           ))}
         </motion.div>
       )}
+
       <div className="space-y-3 sm:space-y-4">
         <p className="font-mono text-sm sm:text-md text-gray-500 text-center lg:text-left">
-          {"// Also comfortable with:"}
+          {"// Tools & DevOps:"}
         </p>
         <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4 justify-center lg:justify-start">
-          {others.map((tech) => (
+          {tools.map((tech) => (
             <motion.div
               key={tech.name}
               whileHover={{ y: -4 }}

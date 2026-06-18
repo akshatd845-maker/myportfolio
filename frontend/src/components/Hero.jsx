@@ -14,6 +14,17 @@ const Hero = () => {
     });
   };
 
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/Resume.pdf?v=2";
+    link.download = "Akshat_Dixit_Resume.pdf";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section
       id="top"
@@ -21,34 +32,43 @@ const Hero = () => {
     >
       <p className="text-sm md:text-base lg:text-lg text-gray-400 font-mono">
         <span className="text-[#27CBCB]">const</span> developer ={" "}
-        <span className="text-gray-300">&quot;Aditya Raj Srivastava&quot;</span>
+        <span className="text-gray-300">&quot;Akshat Dixit&quot;</span>
         ;
       </p>
       <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight">
-        Full-Stack Developer
+        Hi, I&apos;m Akshat Dixit
       </h2>
       <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-[#80978F] leading-tight">
         <TextType
           text={[
-            "Building things that just work.",
-            "Keeping the code clean.",
-            "Solving problems properly.",
-            "Shipping without the drama.",
+            "Frontend AI Engineer.",
+            "Full Stack Developer.",
+            "Building scalable products.",
+            "Shipping production-ready apps.",
           ]}
           typingSpeed={75}
           pauseDuration={1500}
-          deleteSpeed={50}
+          deletingSpeed={50}
           loop={true}
           showCursor={true}
           cursorCharacter="|"
         />
       </h2>
       <p className="text-[#80978F] text-base md:text-lg lg:text-xl mt-2 lg:mt-3 w-full lg:w-[60%]">
-        I build end-to-end web applications, connecting intuitive frontends with
-        scalable backend systems focused on clean architecture, performance, and
-        production-ready results.
+        Third-year Computer Science undergraduate with 1+ years of full-stack
+        engineering experience. I build production-grade applications across
+        React, Next.js frontends, Node.js/FastAPI backends and AI integrations.
+        Passionate about creating scalable products and exceptional user
+        experiences.
       </p>
       <div className="flex flex-col sm:flex-row justify-start items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-5 mt-3">
+        <button
+          onClick={handleDownload}
+          className="bg-[#27CBCB] px-5 py-3 sm:px-7 sm:py-3 text-gray-900 font-semibold rounded-sm
+      cursor-pointer hover:scale-105 transition-transform duration-200 w-full sm:w-auto text-center"
+        >
+          Download Resume <span className="font-extrabold text-lg">↓</span>
+        </button>
         <button
           onClick={() => scrollToSection("projects")}
           className="bg-[#26D868] px-5 py-3 sm:px-7 sm:py-3 text-gray-800 font-semibold rounded-sm
@@ -61,7 +81,7 @@ const Hero = () => {
           className="border border-gray-600 px-5 py-3 font-semibold cursor-pointer
       hover:bg-gray-900 transition-colors duration-200 w-full sm:w-auto text-center"
         >
-          Get in Touch
+          Contact Me
         </button>
       </div>
       <div className="hidden lg:block absolute left-20 top-40 opacity-10">
@@ -121,7 +141,7 @@ const Hero = () => {
             {"// developer"}
           </div>
           <div className="font-mono text-xs md:text-sm text-gray-500">
-            {"// designer"}
+            {"// ai-engineer"}
           </div>
           <div className="font-mono text-xs md:text-sm text-gray-500">
             {"// problem-solver"}
