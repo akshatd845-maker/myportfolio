@@ -3,8 +3,6 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
-
 const fade = {
   hidden: { opacity: 0, y: 25 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -13,7 +11,6 @@ const fade = {
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(null);
 
   useEffect(() => {
@@ -44,41 +41,21 @@ const Contact = () => {
     setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!validate()) return;
 
-    setLoading(true);
+    const mailtoLink = `mailto:akshatd845@gmail.com?subject=${encodeURIComponent(
+      `Portfolio message from ${form.name}`
+    )}&body=${encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+    )}`;
 
-    try {
-      const res = await fetch(`${API_BASE}/send-email`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    window.location.href = mailtoLink;
 
-      if (!res.ok) throw new Error("server_error");
-
-      setForm({ name: "", email: "", message: "" });
-      setToast({ type: "success", text: "Message sent successfully ✓" });
-    } catch (err) {
-      // If backend is offline, open mailto as a reliable fallback
-      const isNetworkError =
-        err instanceof TypeError && err.message.toLowerCase().includes("fetch");
-      if (isNetworkError) {
-        const subject = encodeURIComponent(`Portfolio message from ${form.name}`);
-        const body = encodeURIComponent(
-          `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-        );
-        window.open(`mailto:akshatd845@gmail.com?subject=${subject}&body=${body}`);
-        setToast({ type: "success", text: "Opening your email client ✓" });
-      } else {
-        setToast({ type: "error", text: "Failed to send — please email directly." });
-      }
-    } finally {
-      setLoading(false);
-    }
+    setForm({ name: "", email: "", message: "" });
+    setToast({ type: "success", text: "Opening your email client ✓" });
   };
 
   return (
@@ -209,7 +186,7 @@ const Contact = () => {
             className="cursor-pointer w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-[#27CBCB] hover:bg-[#1fb3b3] text-gray-900 font-semibold transition-colors"
           >
             <Send className="w-4 h-4" />
-            {loading ? "Sending..." : "Send Message"}
+            Send Message
           </button>
 
           {toast && (
