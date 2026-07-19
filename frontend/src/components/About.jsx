@@ -86,7 +86,7 @@ const About = () => {
           <motion.div variants={fadeUp} className="relative pl-6">
             <div className="absolute left-0 top-2 w-1 h-20 bg-linear-to-b from-[#27CBCB] to-[#26D868] rounded-full" />
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-              Third-year Computer Science student at Shri Ramswaroop Memorial
+              Fourth-year Computer Science student at Shri Ramswaroop Memorial
               University, Lucknow. With{" "}
               <span className="text-[#27CBCB]">1+ years of full-stack engineering</span>{" "}
               experience, I build scalable MERN stack applications — from
