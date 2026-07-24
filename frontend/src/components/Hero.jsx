@@ -55,7 +55,7 @@ const Hero = () => {
         />
       </h2>
       <p className="text-[#80978F] text-base md:text-lg lg:text-xl mt-2 lg:mt-3 w-full lg:w-[60%]">
-        Third-year Computer Science undergraduate with 1+ years of full-stack
+        Fourth-year Computer Science undergraduate with 1+ years of full-stack
         engineering experience. I build production-grade applications across
         React, Next.js frontends, Node.js/Express backends and MongoDB databases.
         Passionate about scalable systems, clean architecture, and exceptional

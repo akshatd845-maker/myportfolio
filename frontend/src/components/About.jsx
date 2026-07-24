@@ -56,7 +56,7 @@ const About = () => {
             name="Akshat Dixit"
             title="Full Stack Developer"
             handle="akshatd845"
-            status="3rd Year CS Student"
+            status="Fourth-year CS Student"
             contactText="Let's Connect"
             miniAvatarUrl={profile}
             avatarUrl={profileImg}

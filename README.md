@@ -15,7 +15,7 @@
 
 **Akshat Dixit** — Software Development Engineer | Full Stack Developer based in **Lucknow, India**.
 
-Third-year Computer Science undergraduate with **1+ years of experience** building production-grade full-stack applications using React, Next.js, Node.js, FastAPI and AI integrations. Passionate about scalable systems, clean architecture, and shipping products that work in the real world.
+Fourth-year Computer Science undergraduate with **1+ years of experience** building production-grade full-stack applications using React, Next.js, Node.js, FastAPI and AI integrations. Passionate about scalable systems, clean architecture, and shipping products that work in the real world.
 
 ---
 
