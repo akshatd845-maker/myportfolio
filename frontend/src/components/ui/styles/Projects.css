@@ -1,0 +1,32 @@
+/* Project card — narrow transition to transform only and move the
+   gradient sweep to a CSS keyframe so the browser can promote it to
+   its own compositor layer cheaply. */
+
+.project-image {
+  will-change: transform;
+  transition: transform 500ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-image {
+    transition: none;
+  }
+}
+
+.project-sweep {
+  transform: translate3d(-60%, 0, 0);
+  will-change: transform;
+  transition: transform 1200ms ease-out;
+  pointer-events: none;
+}
+
+.group:hover .project-sweep,
+.group:focus-within .project-sweep {
+  transform: translate3d(60%, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-sweep {
+    transition: none;
+  }
+}

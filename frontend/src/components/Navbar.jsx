@@ -9,24 +9,41 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const lastScrollY = useRef(0);
+  const latestScrollY = useRef(0);
+  const rafId = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => {
-      const currentY = window.scrollY;
+    const flush = () => {
+      rafId.current = null;
+      const currentY = latestScrollY.current;
 
       setScrolled(currentY > 20);
 
       if (currentY > lastScrollY.current && currentY > 120) {
         setHidden(true);
-        setMobileMenuOpen(false); 
+        setMobileMenuOpen(false);
       } else {
         setHidden(false);
       }
 
       lastScrollY.current = currentY;
     };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const onScroll = () => {
+      latestScrollY.current = window.scrollY;
+      if (rafId.current === null) {
+        rafId.current = requestAnimationFrame(flush);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafId.current !== null) {
+        cancelAnimationFrame(rafId.current);
+        rafId.current = null;
+      }
+    };
   }, []);
 
   useEffect(() => {

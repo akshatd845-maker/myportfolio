@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+/* === Scroll perf: skip rendering offscreen sections =====================
+   content-visibility: auto tells the browser to skip layout/paint for any
+   <section> not in the viewport. contain-intrinsic-size is a placeholder
+   so the scrollbar height stays correct before the section is measured. */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+/* === Original float-animation, now gated by user motion preference ====== */
 @keyframes float {
   0%, 100% {
     transform: translateY(0px) rotate(-1deg);
@@ -9,40 +19,55 @@
   }
 }
 
-.float-animation {
-  animation: float 6s ease-in-out infinite;
-  box-shadow: 
-    0 10px 30px rgba(251, 191, 36, 0.3),
-    0 15px 40px rgba(0, 0, 0, 0.1),
-    inset 0 0 20px rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-}
+@media (prefers-reduced-motion: no-preference) {
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+    box-shadow:
+      0 10px 30px rgba(251, 191, 36, 0.3),
+      0 15px 40px rgba(0, 0, 0, 0.1),
+      inset 0 0 20px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
 
-.float-animation:hover {
-  animation-play-state: paused;
-  transform: scale(1.05) rotate(0deg);
-  box-shadow: 
-    0 20px 40px rgba(251, 191, 36, 0.4),
-    0 25px 50px rgba(0, 0, 0, 0.15),
-    inset 0 0 30px rgba(255, 255, 255, 0.3);
-}
+  .float-animation:hover {
+    animation-play-state: paused;
+    transform: scale(1.05) rotate(0deg);
+    box-shadow:
+      0 20px 40px rgba(251, 191, 36, 0.4),
+      0 25px 50px rgba(0, 0, 0, 0.15),
+      inset 0 0 30px rgba(255, 255, 255, 0.3);
+  }
 
-.float-animation::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  background: linear-gradient(45deg, #fbbf24, transparent);
-  border-radius: 20px;
-  z-index: -1;
-  opacity: 0.1;
-  filter: blur(15px);
-  animation: float 6s ease-in-out infinite reverse;
+  .float-animation::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, #fbbf24, transparent);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.1;
+    filter: blur(15px);
+    animation: float 6s ease-in-out infinite reverse;
+  }
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+/* === Global reduced-motion opt-out =====================================
+   Honored by browsers that expose prefers-reduced-motion: reduce.
+   Stops every animation and shortens transitions so the page becomes
+   essentially static — easier to read for users with vestibular
+   disorders, and a free perf win for anyone who opts in. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

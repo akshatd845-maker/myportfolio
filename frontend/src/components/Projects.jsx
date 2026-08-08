@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa";
 import futurebasket from "../assets/futurebasket.png";
 import taskflow from "../assets/taskflow.png";
 import weather from "../assets/weather.png";
+import "./ui/styles/Projects.css";
 
 const projects = [
   {
@@ -75,14 +76,14 @@ const ProjectCard = ({ project }) => {
         <img
           src={project.image}
           alt={project.title}
-          className="h-full w-full object-cover scale-105 group-hover:scale-100 transition-all duration-500"
+          loading="lazy"
+          decoding="async"
+          className="project-image h-full w-full object-cover scale-105 group-hover:scale-100"
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
-        <motion.div
-          initial={{ x: "-60%" }}
-          whileHover={{ x: "60%" }}
-          transition={{ duration: 1.2 }}
-          className={`absolute inset-0 bg-linear-to-r ${project.accent} to-transparent opacity-60`}
+        <div
+          className={`project-sweep absolute inset-0 bg-linear-to-r ${project.accent} to-transparent opacity-60`}
+          aria-hidden
         />
         <div className="absolute bottom-3 left-4">
           <h3 className="text-base sm:text-lg font-semibold text-white">{project.title}</h3>

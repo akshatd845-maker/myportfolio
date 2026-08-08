@@ -1,0 +1,90 @@
+/* Background — static radial gradients + optional slow CSS-only drift.
+   No blur(), no animated JS transforms. The two colored blobs are painted
+   once and stay painted; scroll does not touch them. */
+
+.bg-fixed {
+  position: fixed;
+  inset: 0;
+  z-index: -50;
+  overflow: hidden;
+  background-color: #101318;
+  pointer-events: none;
+  contain: strict;
+  content-visibility: auto;
+  contain-intrinsic-size: 100vw 100vh;
+}
+
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@media (min-width: 640px) {
+  .bg-grid {
+    background-size: 30px 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bg-grid {
+    background-size: 40px 40px;
+  }
+}
+
+.bg-blob {
+  position: absolute;
+  border-radius: 9999px;
+  will-change: transform;
+  /* Static radial gradient — pre-painted; no filter, no blur. */
+}
+
+.bg-blob-cyan {
+  top: 25%;
+  left: 33%;
+  width: 16rem;
+  height: 16rem;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.18), transparent 70%);
+}
+
+.bg-blob-emerald {
+  bottom: 25%;
+  right: 25%;
+  width: 14rem;
+  height: 14rem;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.16), transparent 70%);
+}
+
+@media (min-width: 640px) {
+  .bg-blob-cyan { width: 20rem; height: 20rem; }
+  .bg-blob-emerald { width: 18rem; height: 18rem; }
+}
+
+@media (min-width: 1024px) {
+  .bg-blob-cyan { width: 24rem; height: 24rem; }
+  .bg-blob-emerald { width: 22rem; height: 22rem; }
+}
+
+/* Optional very slow CSS-only drift — desktop only, honors reduced-motion.
+   transform-only animation, GPU-friendly. */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .bg-blob-cyan {
+    animation: bg-drift-a 60s ease-in-out infinite alternate;
+  }
+  .bg-blob-emerald {
+    animation: bg-drift-b 70s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes bg-drift-a {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(40px, -30px, 0); }
+}
+
+@keyframes bg-drift-b {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-40px, 30px, 0); }
+}
